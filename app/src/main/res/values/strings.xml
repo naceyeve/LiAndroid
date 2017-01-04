@@ -6,6 +6,9 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="bye_burger_bottom_behavior">com.naceyeve.liandroid.behavior.byeburgernavigationview.ByeBurgerBottomBehavior</string>
+    <string name="bye_burger_title_behavior">com.naceyeve.liandroid.behavior.byeburgernavigationview.ByeBurgerTitleBehavior</string>
+
     <string name="version_str">PrettyGirls\npleasecallmecoder</string>
     <string name="action_about">关于我</string>
     <string name="meizi">Meizi</string>
@@ -15,4 +18,9 @@
     <string name="girl">girl</string>
     <string name="zhihu">Zhihu</string>
     <string name="topnews">TopNews</string>
+    <string name="main_home">最新</string>
+    <string name="main_category">分类浏览</string>
+    <string name="main_meizhi">妹子</string>
+    <string name="main_reading">闲读</string>
+    <string name="main_collect">我的收藏</string>
 </resources>

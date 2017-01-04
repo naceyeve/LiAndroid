@@ -1,6 +1,7 @@
 package com.naceyeve.liandroid;
 
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -19,6 +20,7 @@ import com.naceyeve.liandroid.base.ActivityManager;
 import com.naceyeve.liandroid.base.AppActivity;
 import com.naceyeve.liandroid.base.BaseFragment;
 import com.naceyeve.liandroid.home.GirlsFragment;
+import com.naceyeve.liandroid.util.ToastUtil;
 import com.naceyeve.liandroid.zhihu.ZhihuFragment;
 
 import butterknife.Bind;
@@ -27,7 +29,7 @@ import butterknife.ButterKnife;
 import static com.naceyeve.liandroid.R.id.fab;
 
 public class MainActivity extends AppActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
 
     @Bind(R.id.toolbar)
@@ -40,6 +42,8 @@ public class MainActivity extends AppActivity
     DrawerLayout mDrawerLayout;
     @Bind(R.id.content_main)
     FrameLayout mContentMain;
+    @Bind(R.id.bottom_navigation)
+    BottomNavigationView mBottomNavigation;
 
     private long exitTime = 0;
     MenuItem currentMenuItme;
@@ -80,6 +84,7 @@ public class MainActivity extends AppActivity
 
         mNavView = (NavigationView) findViewById(R.id.nav_view);
         mNavView.setNavigationItemSelectedListener(this);
+        mBottomNavigation.setOnNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -154,8 +159,17 @@ public class MainActivity extends AppActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.item_home) {
+
+        } else if (id == R.id.item_category) {
+
+        } else if (id == R.id.item_meizhi) {
+            ToastUtil.showShort(this,"meizhi");
+        } else if (id == R.id.item_reading) {
+
+        } else if (id == R.id.item_collect) {
+
         }
-//        currentMenuItme = mNavView.getMenu().findItem(id);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -180,15 +194,15 @@ public class MainActivity extends AppActivity
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             //两秒内再次按后退，关闭程序；
-            if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
-            }else {
-                if(System.currentTimeMillis() - exitTime > 2000){
-                    Snackbar.make(mFab,"再按一次退出程序",Snackbar.LENGTH_SHORT).show();
+            } else {
+                if (System.currentTimeMillis() - exitTime > 2000) {
+                    Snackbar.make(mFab, "再按一次退出程序", Snackbar.LENGTH_SHORT).show();
                     exitTime = System.currentTimeMillis();
-                }else {
+                } else {
                     ActivityManager.getInstance().finishAllActivity();
                     System.exit(0);
                 }
