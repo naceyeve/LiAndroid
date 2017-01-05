@@ -20,6 +20,7 @@
 package com.naceyeve.liandroid.api;
 
 
+import com.naceyeve.liandroid.bean.Ganhuo;
 import com.naceyeve.liandroid.bean.Meizi;
 import com.naceyeve.liandroid.bean.Zhihu;
 import com.naceyeve.liandroid.bean.ZhihuDescriber;
@@ -56,4 +57,20 @@ public interface ApiStore {
 //
 //    @GET("http://lab.zuimeia.com/wallpaper/category/1/?page_size=1")
 //    Observable<ImageResponse> getImage();
+    //干货
+    /**
+     * 获取发布干货的日期
+     *
+     * @return
+     */
+    @GET("/api/day/history")
+    Observable<ApiResponse<List<String>>> getDate();
+
+    /**
+     * 获取最近5日干货网站数据
+     *
+     * @return
+     */
+    @GET("/api/history/content/5/1")
+    Observable<ApiResponse<List<Ganhuo>>> getRecentlyData();
 }

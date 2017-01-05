@@ -20,6 +20,7 @@ import com.naceyeve.liandroid.base.ActivityManager;
 import com.naceyeve.liandroid.base.AppActivity;
 import com.naceyeve.liandroid.base.BaseFragment;
 import com.naceyeve.liandroid.home.GirlsFragment;
+import com.naceyeve.liandroid.recently.RecentlyFragment;
 import com.naceyeve.liandroid.util.ToastUtil;
 import com.naceyeve.liandroid.zhihu.ZhihuFragment;
 
@@ -162,7 +163,9 @@ public class MainActivity extends AppActivity
         } else if (id == R.id.item_home) {
 
         } else if (id == R.id.item_category) {
-
+            mToolbar.setTitle(R.string.main_category);
+            mFragment = RecentlyFragment.getInstence();
+            replaceFragment();
         } else if (id == R.id.item_meizhi) {
             ToastUtil.showShort(this,"meizhi");
         } else if (id == R.id.item_reading) {

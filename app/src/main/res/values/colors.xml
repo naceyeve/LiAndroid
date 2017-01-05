@@ -16,6 +16,8 @@
     <color name="main_tab_selected">@color/md_blue_grey_800</color>
     <color name="main_tab_unselected">#ccc</color>
 
+    <color name="status_view_text_color">#b6b3b3</color>
+
     <!--======================reds==================================-->
     <color name="md_red_50">#fde0dc</color>
     <color name="md_red_100">#f9bdbb</color>

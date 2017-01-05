@@ -2,7 +2,6 @@ package com.naceyeve.liandroid.app;
 
 import android.app.Application;
 
-import com.naceyeve.liandroid.app.exception.LocalFileHandler;
 import com.naceyeve.liandroid.util.LogUtil;
 import com.naceyeve.liandroid.util.ToastUtil;
 
@@ -30,7 +29,7 @@ public class MyApplication extends Application {
 
         ToastUtil.isShow = true;//显示Toast
         //本地异常退出处理
-        Thread.setDefaultUncaughtExceptionHandler(new LocalFileHandler(this));
+//        Thread.setDefaultUncaughtExceptionHandler(new LocalFileHandler(this));
 
     }
 

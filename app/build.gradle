@@ -46,4 +46,7 @@ dependencies {
     compile 'com.jude:easyrecyclerview:4.0.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'//Glide中毛玻璃效果
+    compile ('me.drakeet.multitype:multitype:2.2.1',{
+        exclude group: 'com.android.support' //MultiType 内部引用了 recyclerview-v7:24.2.1 ，如果你不想使用这个版本，可以使用 exclude 将它排除掉
+    })//多类型视图
 }
