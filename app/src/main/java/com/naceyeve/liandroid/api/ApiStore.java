@@ -37,6 +37,7 @@ import rx.Observable;
  * Created by drakeet on 8/9/15.
  */
 public interface ApiStore {
+    String BASE_URL= "http://gank.io";
         //妹子
     @GET("api/data/{type}/{count}/{page}")
     Observable<ApiResponse<List<Meizi>>> getGirls(

@@ -1,7 +1,6 @@
 package com.naceyeve.liandroid.home;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -13,6 +12,7 @@ import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.naceyeve.liandroid.R;
+import com.naceyeve.liandroid.app.MyApplication;
 import com.naceyeve.liandroid.base.BaseFragment;
 import com.naceyeve.liandroid.bean.Meizi;
 import com.naceyeve.liandroid.girl.GirlActivity;
@@ -20,6 +20,8 @@ import com.naceyeve.liandroid.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,7 +45,8 @@ public class GirlsFragment extends BaseFragment implements GirlsContract.View, S
     private GirlsAdapter mAdapter;
     private int page = 1; //页数
     private int size = 20;//数目
-    private GirlsPresenter mPresenter;
+    @Inject
+    public GirlsPresenter mPresenter;
 
     public static GirlsFragment getInstance() {
         GirlsFragment fragment = new GirlsFragment();
@@ -53,7 +56,8 @@ public class GirlsFragment extends BaseFragment implements GirlsContract.View, S
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this, view);
-        mPresenter = new GirlsPresenter(this);
+//        mPresenter = new GirlsPresenter(this);
+        MyApplication.get(getActivity()).getAppComponent().plus(new GirlsModule(this)).inject(this);
         initRecyclerView();
         mPresenter.getGirls(page,size,true);
     }
@@ -87,12 +91,12 @@ public class GirlsFragment extends BaseFragment implements GirlsContract.View, S
                 intent.putParcelableArrayListExtra("girls",data);
                 intent.putExtra("current",position);
                 ActivityOptionsCompat optionsCompat;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),holder.itemView,holder.itemView.getTransitionName());
-                }else {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                    optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),holder.itemView,holder.itemView.getTransitionName());
+//                }else {
 
                      optionsCompat = ActivityOptionsCompat.makeScaleUpAnimation(holder.itemView, holder.itemView.getWidth() / 2, holder.itemView.getHeight() / 2, 0, 0);
-                }
+//                }
                 startActivity(intent,optionsCompat.toBundle());
 
             }

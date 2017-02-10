@@ -1,5 +1,6 @@
 package com.naceyeve.liandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import com.naceyeve.liandroid.base.ActivityManager;
 import com.naceyeve.liandroid.base.AppActivity;
 import com.naceyeve.liandroid.base.BaseFragment;
 import com.naceyeve.liandroid.home.GirlsFragment;
+import com.naceyeve.liandroid.home.HomeActivity;
 import com.naceyeve.liandroid.recently.RecentlyFragment;
 import com.naceyeve.liandroid.util.ToastUtil;
 import com.naceyeve.liandroid.zhihu.ZhihuFragment;
@@ -153,7 +155,8 @@ public class MainActivity extends AppActivity
 
             replaceFragment();
         } else if (id == R.id.nav_topnews) {
-
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
